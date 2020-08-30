@@ -1,0 +1,35 @@
+Twitter TopLinks App
+Please build an app that confirms to the following specs:
+Please develop the app in a framework of your choice. Our web stack is primarily NodeJs/React, we would prefer NodeJs/React apps.
+The app should let the user login with Twitter. (https://developer.twitter.com/en/docs/basics/authentication/overview/oauth )
+Once authenticated, the app pulls just the tweet's that contain URLs from a users stream (friends + users post) for the past 7 days https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline
+Persist the tweets in the database
+Once stored, the application should then compute and display
+Actual Tweets containing links 
+Which user has shared the most links
+List of Top Domains that have been shared so far
+Please create a simple screen on the frontend where the users can
+Search for tweets by hashtag
+Filter tweets by location
+Evaluation Criteria:
+Your submission will be evaluated on the following parameters
+Code Quality - the way you structure your code(readability/use of correct data structures/modularity)
+Creativity - feel free to add extra features/functionality
+Hosting Code:
+Please host the app where we can access publicly.
+You can use heroku.com / zeit.co to host your app for free.
+You can use MongoDB atlas to host the database for free.
+Please send us the link to your publicly accessible app.
+Submitting Code:
+Please create an account on Github(http://github.com ) if you dont already have
+Create a new public repository with the source of the project
+Add a README.md file to the root of your project that clearly mentions all steps to compile and run the app.
+Send us the link to the Github Repo.
+ 
+Notes:
+We think that ideally you should be able to build this app in 5-7 hours. It would be great if you could let us know when are you going to start working , and by when you would finish the app. This would help us in scheduling time to review your app.
+We would also like to up setup a short call(max 45 minutes) with you where you can walk us through your code
+Please let us know if you have any queries or doubts. We would be glad to explain the problem to you over a phone call.
+Let us know if there’s any issues completing the task, we can figure out other ways to carry out the process.
+ 
+

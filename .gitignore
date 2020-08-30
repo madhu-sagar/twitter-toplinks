@@ -1,0 +1,22 @@
+package-lock.json
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Enviromental
+.env
+
+
+# Webpack related
+public/dist/
+dist/
+tmp/
+
+#Modules
+node_modules
