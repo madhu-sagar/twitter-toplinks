@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
+    "build": "node -r @babel/register  ./node_modules/webpack/bin/webpack --config ./webpack/webpack.production.config.js --progress --profile --colors && rimraf ./dist && mv ./tmp ./dist",
+    "build-dev": "rimraf ./dist && babel-node ./node_modules/webpack/bin/webpack --config ./webpack/webpack.config.js --progress --profile --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint app server test webpack",
     "clean": "rimraf ./dist && rimraf ./tmp",
-    "dev": "nodemon server/index.js --ignore app/ --ignore test/ --exec babel-node"
+    "dev": "nodemon server/index.js --ignore app/ --ignore test/ --exec babel-node",
+    "forever-start": "forever start --minUptime 1000ms --spinSleepTime 1000ms -a -l forever.log -o out.log -e err.log -c 'nodemon server/server.js --exitcrash --exec babel-node' server/server.js",
+    "forever-stop": "forever stop server/server.js",
+    "predeploy": "npm install && npm run build",
+    "deploy": "npm run forever-stop || true && npm run forever-start"
   },
   "author": "Madhu Sagar",
   "license": "MIT",
@@ -14,10 +20,20 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-json-strings": "^7.10.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
+    "@babel/plugin-transform-async-to-generator": "^7.10.4",
+    "@babel/plugin-transform-react-inline-elements": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.10.5",
     "babel-loader": "^8.1.0",
     "babel-node": "0.0.1-security",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "body-parser": "^1.19.0",
     "connect-mongodb-session": "^2.4.1",
     "cookie-parser": "^1.4.5",
@@ -27,6 +43,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "forever": "^3.0.2",
     "fs-extra": "^9.0.1",
     "html-webpack-plugin": "^4.4.1",
     "lodash": "^4.17.20",
@@ -41,8 +58,11 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "rimraf": "^3.0.2",
     "script-ext-html-webpack-plugin": "^2.1.4",
     "stats-webpack-plugin": "^0.7.0",
@@ -54,12 +74,14 @@
     "webpack-hot-middleware": "^2.25.0",
     "winston": "^3.3.3"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ]
+  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.7.0",
@@ -69,6 +91,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.0"
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "webpack-cli": "^3.3.12"
   }
 }

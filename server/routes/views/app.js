@@ -1,4 +1,4 @@
-import 'dotenv/config';
+require('dotenv').config();
 
 const fs = require('fs');
 
@@ -6,7 +6,7 @@ const path = require('path');
 
 const express = require('express');
 
-const webpack = require('webpack')
+const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('../../../webpack/webpack.config');
@@ -65,4 +65,4 @@ const routes = (app) => {
   }
 };
 
-export default routes;
+module.exports = routes;

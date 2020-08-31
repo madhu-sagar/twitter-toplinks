@@ -1,17 +1,18 @@
-import 'dotenv/config';
-import path from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+
+require('dotenv').config();
 
 const basePath = process.env.BASE_PATH || '';
 
-export default {
+module.exports = {
   devtool: 'eval-source-map',
   mode: 'development',
   entry: [
     'webpack-hot-middleware/client?path=//localhost:7999/__webpack_hmr&reload=true',
-    path.join(__dirname, '../app/entry.js'),
+    path.join(__dirname, '../app/index.js'),
   ],
   output: {
     path: path.join(__dirname, '../dist/'),
