@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Footer() {
-  return (
-    <footer>
-      Copyright &copy;
-      { new Date().getFullYear()}
-      Twenty Twenty
-    </footer>
-  );
-}
+const Footer = () => (
+  <footer>
+    Copyright &copy;
+    { new Date().getFullYear()}
+    Twenty Twenty
+  </footer>
+);
+
+module.exports = Footer;
