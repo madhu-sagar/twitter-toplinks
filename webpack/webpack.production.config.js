@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -6,6 +7,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 
 require('dotenv').config();
+
+const autoprefixer = require('autoprefixer');
 
 const basePath = process.env.BASE_PATH || '';
 
@@ -55,19 +58,38 @@ export default {
         use: [{
           loader: 'raw-loader',
         }],
-      }, {
+      },
+      {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+              sourceMap: true,
+            },
+          },
           {
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
           'css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                autoprefixer({}),
+              ],
+            },
+          },
         ],
-      }, {
-        test: /\.scss$/,
-        loaders: 'style-loader!css-loader!sass-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]',
-      }, {
+      },
+      {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url-loader',
         options: {
