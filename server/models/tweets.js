@@ -25,7 +25,6 @@ const tweetSchema = Schema({
   userwhotweeted: {
     type: Schema.Types.String,
   },
-
 });
 
 const Tweet = mongoose.model('tweet', tweetSchema);

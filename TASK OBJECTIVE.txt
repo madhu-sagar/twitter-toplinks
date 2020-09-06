@@ -11,10 +11,14 @@ List of Top Domains that have been shared so far
 Please create a simple screen on the frontend where the users can
 Search for tweets by hashtag
 Filter tweets by location
+
+
 Evaluation Criteria:
 Your submission will be evaluated on the following parameters
 Code Quality - the way you structure your code(readability/use of correct data structures/modularity)
 Creativity - feel free to add extra features/functionality
+
+
 Hosting Code:
 Please host the app where we can access publicly.
 You can use heroku.com / zeit.co to host your app for free.

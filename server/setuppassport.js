@@ -21,7 +21,7 @@ const setuppassport = (app) => {
       {
         consumerKey: keys.TWITTER_CONSUMER_KEY,
         consumerSecret: keys.TWITTER_CONSUMER_SECRET,
-        callbackURL: `${hostname}/auth/twitter/redirect`,
+        callbackURL: `${hostname}/auth/twitter/return`,
       },
       async (token, tokenSecret, profile, done) => {
         // find current user in UserModel
@@ -41,8 +41,8 @@ const setuppassport = (app) => {
           }
         }
         done(null, currentUser);
-      },
-    ),
+      }
+    )
   );
 
   // serialize the user.id to save in the cookie session

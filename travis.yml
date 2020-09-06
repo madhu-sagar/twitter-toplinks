@@ -1,0 +1,35 @@
+sudo: false
+language: node_js
+services: mongodb
+
+matrix:
+  include:
+  - os: linux
+    node_js: '12'
+    env: NODE_ENV=development
+  fast_finish: true
+
+addons:
+  apt:
+    packages:
+    - xvfb
+before_install:
+- nvm --version
+- node --version
+- npm --version
+- gcc --version
+- g++ --version
+install:
+- npm install
+before_script:
+- npm run lint
+- sleep 5
+script:
+- npm run build-dev
+- npm run build
+- npm test
+notifications:
+  email:
+  - madhusagar@madhusagar.org
+git:
+  depth: 10

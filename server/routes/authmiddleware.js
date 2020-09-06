@@ -1,11 +1,3 @@
-const requireUser = (req, res, next) => {
-  if (!req.user) {
-    res.redirect('/login');
-  } else {
-    next();
-  }
-};
-
 const requireUserAPI = (req, res, next) => {
   if (!req.user) {
     res.json({
@@ -17,4 +9,4 @@ const requireUserAPI = (req, res, next) => {
   }
 };
 
-export default { requireUser, requireUserAPI };
+export default { requireUserAPI };

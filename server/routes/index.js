@@ -2,26 +2,23 @@
 
 const passport = require('passport');
 const reactApp = require('./views/app');
+const requireUserAPI = require('./authmiddleware');
+const authroutes = require('./auth-routes');
 
 require('dotenv').config();
 
-const routes = (app) => {
-  app.get('/login/twitter', passport.authenticate('twitter'));
+const setuproutes = (app) => {
+  app.use('/auth', authroutes);
+  // app.get('/compute', requireUserAPI, require('./api/compute'));
 
-  app.get('/login/twitter/return', passport.authenticate('twitter', {
-    failureRedirect: '/login',
-  }), (req, res) => {
-    const target = req.cookies.target || '/';
-    res.clearCookie('target', { path: '/' });
-    return res.redirect(target);
+  app.get('/healthz', (req, res) => {
+    res.send(200);
   });
-
-  app.get('/logout', require('./views/logout'));
 
   reactApp(app); // set up react routes
 };
 
 // export default routes;
-module.exports = routes;
+module.exports = setuproutes;
 
 /* eslint-enable global-require */

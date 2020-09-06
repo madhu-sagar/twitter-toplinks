@@ -12,19 +12,14 @@ class Main extends Component {
       <div id="wrapper">
         <Helmet titleTemplate="%s | Twitter TopLinks" defaultTitle="Twitter TopLinks" />
         <Header />
-        <div id="main">
-          {...this.props}
-        </div>
+        <div id="main">{...this.props}</div>
       </div>
     );
   }
 }
 
 Main.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 Main.defaultProps = {

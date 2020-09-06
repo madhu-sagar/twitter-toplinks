@@ -36,7 +36,9 @@ const routes = (app) => {
     app.use(webpackHotMiddleware(compiler));
 
     app.get('/*', (req, res) => {
-      const content = middleware.fileSystem.readFileSync(path.join(__dirname, '../../../dist/index.html'));
+      const content = middleware.fileSystem.readFileSync(
+        path.join(__dirname, '../../../dist/index.html')
+      );
 
       if (req.user) {
         // eslint-disable-next-line no-underscore-dangle

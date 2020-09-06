@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class Header extends Component {
-    _handleSignInClick = () => {
+  _handleSignInClick = () => {
     // Authenticate using via passport api in the backend
     // Open Twitter login page
     // Upon successful login, a cookie session will be stored in the client
-      window.open('http://localhost:4000/auth/twitter', '_self');
-    };
+    window.open('http://localhost:4000/auth/twitter', '_self');
+  };
 
   _handleLogoutClick = () => {
     // Logout using Twitter passport api
