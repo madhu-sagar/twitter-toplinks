@@ -14,7 +14,7 @@ const basePath = process.env.BASE_PATH || '';
 
 export default {
   entry: [
-    path.join(__dirname, '../app/index.jsx'),
+    path.join(__dirname, '../app/index.js'),
   ],
   mode: 'production',
   output: {
@@ -73,11 +73,6 @@ export default {
               sourceMap: true,
             },
           },
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {},
-          },
-          'css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]',
           {
             loader: 'postcss-loader',
             options: {
