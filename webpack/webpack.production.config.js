@@ -28,7 +28,7 @@ export default {
   plugins: [
     new webpack.DefinePlugin({
       BASE_PATH: JSON.stringify(basePath),
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
+      NODE_ENV: JSON.stringify(process.env || 'production'),
     }),
     new HtmlWebpackPlugin({
       template: 'server/views/index.tpl.html',

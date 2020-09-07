@@ -23,7 +23,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       BASE_PATH: JSON.stringify(basePath),
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+      NODE_ENV: JSON.stringify(process.env || 'development'),
     }),
     new HtmlWebpackPlugin({
       template: 'server/views/index.tpl.html',

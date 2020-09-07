@@ -23,6 +23,7 @@ const sessiondatabase = process.env.SESSION_DB || 'sessiondatabase';
 const basePath = process.env.BASE_PATH || '';
 const port = process.env.SERVER_PORT || 7999;
 const host = process.env.HOST_NAME || `http://localhost:${port}`;
+const env = process.env.NODE_ENV;
 
 const setuppassport = require('./setuppassport');
 const setuproutes = require('./routes');
@@ -80,8 +81,12 @@ setuproutes(app);
 
 // connect react to nodejs express server
 // eslint-disable-next-line no-console
-app.listen(port, () => console.log(
-  `Started in ${process.env === 'development' ? process.env : 'production'} mode on port ${port}.`,
-));
+
+app.listen(port, '0.0.0.0', (err) => {
+  if (err) {
+    console.error('application-err', err);
+  }
+  console.info(`Started in ${process.env.NODE_ENV === 'development' ? env : 'production'} mode on port ${port}.`);
+});
 
 export default app;

@@ -18,7 +18,7 @@
     * Configuration management with environment variables from 3rd principle of 12 factor app.
     * robust against sudden death through forever module. Part of 9th principle of 12 factor app.
     * Continous Integration with TravisCI(to be added more tests).
-    * Custom Webpack configuration.
+    * Custom Webpack configuration with Hot Module Reloading HMR and Server side rendering(SSR).
 
 # Installation
 * Clone the source code and get inside the directory
@@ -36,13 +36,10 @@ https://docs.inboundnow.com/guide/create-twitter-application/
 *  Install all the dependencies
 npm install
 
-*  For developing on local dev environment we need mongodb server with us. See here for detailed tutorial(https://phoenixnap.com/kb/docker-mongodb)
+*  For developing on local dev environment we need mongodb server with us. See here for detailed tutorial with apt(ubuntu) as mentioned here (https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04)
 
-* So fetch a mongodb container and run it(assuming we have root privileges on local machine).
-sudo apt install docker 
-sudo docker pull mongo
-sudo mkdir -p /mongodata
-sudo docker run -it -v mongodata:/data/db --name mongodb -d mongo
+sudo apt install mongodb
+
 
 * Now run the build on the local environment
 npm run build-dev

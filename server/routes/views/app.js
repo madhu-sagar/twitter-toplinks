@@ -12,7 +12,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('../../../webpack/webpack.config');
 
 const routes = (app) => {
-  if (process.env === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     const compiler = webpack(config);
 
     compiler.plugin('done', () => {
@@ -37,7 +37,7 @@ const routes = (app) => {
 
     app.get('/*', (req, res) => {
       const content = middleware.fileSystem.readFileSync(
-        path.join(__dirname, '../../../dist/index.html')
+        path.join(__dirname, '../../../dist/index.html'),
       );
 
       if (req.user) {
