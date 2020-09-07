@@ -8,14 +8,17 @@ const userhome = `http://${host}:${port}/userhome`;
 
 router.get('/login/twitter', passport.authenticate('twitter'));
 
-router.get('/twitter/returncallback',
+router.get(
+  '/twitter/returncallback',
   passport.authenticate('twitter', {
-    failureRedirect: '/login' }),
+    failureRedirect: '/login',
+  }),
   (req, res) => {
     const target = req.cookies.target || userhome;
     res.clearCookie('target', { path: '/' });
     return res.redirect(target);
-  });
+  }
+);
 
 // router.get('/login/success', (req, res) => {
 //   if (req.user) {

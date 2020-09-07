@@ -1,4 +1,6 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable max-len */
+// import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';

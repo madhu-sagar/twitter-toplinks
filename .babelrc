@@ -12,7 +12,8 @@
       "@babel/plugin-transform-async-to-generator",
       "@babel/plugin-transform-react-inline-elements",
       "@babel/plugin-transform-runtime",
-      "transform-react-remove-prop-types"
+      "transform-react-remove-prop-types",
+      [ "js-logger", { "format": { "separator": ".", "project": false } } ]
     ]
   }
   

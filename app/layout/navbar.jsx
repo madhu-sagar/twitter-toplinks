@@ -3,12 +3,24 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-class Navbar extends Component {}
+class Navbar extends Component {
+  onLogoutClick = (e) => {
+    e.preventDefault();
+    // this.props.logoutUser();
+  };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
+  render() {
+    const { isAuthenticated } = this.props.auth;
+    return null;
+  }
+}
 
-const mapDispatchToProps = (dispatch) => {};
+// const mapStateToProps = (state) => ({
+//   auth: state.auth,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+// const mapDispatchToProps = (dispatch) => {
+
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

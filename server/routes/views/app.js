@@ -16,6 +16,7 @@ const routes = (app) => {
     const compiler = webpack(config);
 
     compiler.plugin('done', () => {
+      // eslint-disable-next-line no-console
       console.info('Webpack finished compiling.');
     });
 
@@ -37,7 +38,7 @@ const routes = (app) => {
 
     app.get('/*', (req, res) => {
       const content = middleware.fileSystem.readFileSync(
-        path.join(__dirname, '../../../dist/index.html'),
+        path.join(__dirname, '../../../dist/index.html')
       );
 
       if (req.user) {

@@ -1,8 +1,6 @@
 /* eslint-disable global-require */
 
-const passport = require('passport');
 const reactApp = require('./views/app');
-const requireUserAPI = require('./authmiddleware');
 const authroutes = require('./auth-routes');
 
 require('dotenv').config();
